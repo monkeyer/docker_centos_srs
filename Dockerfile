@@ -23,7 +23,7 @@ RUN mkdir path && \
 
 #copy www folder
 COPY nginx.conf /usr/local/nginx/conf/nginx.conf
-COPY www /path/to/nginx-rtmp-module/test/
+COPY www /path/to/nginx-rtmp-module/test/www
 
 # change config , start nginx server.
 RUN cd /usr/local/nginx/sbin && \
