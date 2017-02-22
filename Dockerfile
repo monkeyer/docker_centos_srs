@@ -27,5 +27,9 @@ RUN cd /usr/local/nginx/sbin && \
 	cp /path/to/nginx-rtmp-module/test/nginx.conf /usr/local/nginx/conf/nginx.conf && \
 	./nginx
 
+# private expose
+EXPOSE 1935
+EXPOSE 8080
+
 # Print something
 RUN echo "welcome to centos_nginx_rtmp server."
