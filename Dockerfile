@@ -21,15 +21,16 @@ RUN mkdir path && \
 	make && \
 	make install
 
+#copy www folder
+COPY nginx.conf /usr/local/nginx/conf/nginx.conf
+COPY www /path/to/nginx-rtmp-module/test/
 
 # change config , start nginx server.
 RUN cd /usr/local/nginx/sbin && \
-	cp /path/to/nginx-rtmp-module/test/nginx.conf /usr/local/nginx/conf/nginx.conf && \
 	./nginx
 
 # private expose
-EXPOSE 1935
-EXPOSE 8080
+EXPOSE 1935 80
 
 # Print something
 RUN echo "welcome to centos_nginx_rtmp server."
