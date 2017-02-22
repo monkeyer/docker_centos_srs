@@ -6,20 +6,25 @@ RUN yum update -y && \
     yum  -y install vim git gcc gcc-c++ autoconf automake make wget file openssl openssl-devel
 
 #downloads nginx and nginx-rtmp-module,and then compiler them.
-RUN mkdir downloads && \
-	cd downloads && \
+RUN mkdir path && \
+	cd path && \
+	mkdir to && \
+	cd to && \
 	git clone https://github.com/arut/nginx-rtmp-module.git && \
+	cd / && \
+	mkdir downloads && \
+	cd downloads && \
 	wget http://nginx.org/download/nginx-1.11.10.tar.gz && \
 	tar zxvf nginx-1.11.10.tar.gz && \
 	cd /downloads/nginx-1.11.10 && \
-	./configure --add-module=/downloads/nginx-rtmp-module --with-http_ssl_module && \
+	./configure --add-module=/path/to/nginx-rtmp-module --with-http_ssl_module && \
 	make && \
 	make install
 
 
 # change config , start nginx server.
 RUN cd /usr/local/nginx/sbin && \
-	cp /downloads/nginx-rtmp-module/test/nginx.conf /usr/local/nginx/conf/nginx.conf && \
+	cp /path/to/nginx-rtmp-module/test/nginx.conf /usr/local/nginx/conf/nginx.conf && \
 	./nginx
 
 # Print something
