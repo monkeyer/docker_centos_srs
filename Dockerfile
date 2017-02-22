@@ -17,8 +17,9 @@ RUN mkdir downloads && \
 	make install
 
 
-# start nginx server.
+# change config , start nginx server.
 RUN cd /usr/local/nginx/sbin && \
+	cp /downloads/nginx-rtmp-module/test/nginx.conf /usr/local/nginx/conf/nginx.conf && \
 	./nginx
 
 # Print something
